@@ -69,6 +69,7 @@ impl AuthorityManage {
                 self.propose_weight_sum,
             )
         } else {
+            println!("role");
             let len = self.address.len();
             let prime_num = *get_primes_less_than_x(len as u32).last().unwrap_or(&1) as u64;
             let res = (height * prime_num + round) % (len as u64);
