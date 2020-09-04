@@ -6,6 +6,9 @@ pub fn get_random_proposer_index(seed: u64, weights: &[u64], weight_sum: u64) ->
     let mut rng = Pcg::seed_from_u64(seed);
     let mut acc = 0u64;
     let mut random_digit = rng.next_u64();
+
+    log::error!("random leader");
+
     while random_digit >= weight_sum * tmp {
         random_digit = rng.next_u64();
     }
