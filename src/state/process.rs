@@ -85,6 +85,8 @@ where
         let mut auth = AuthorityManage::new();
         auth.update(&mut authority_list);
 
+        log::error!("init_height {}", init_height);
+
         let state = State {
             height:              init_height,
             round:               INIT_ROUND,
@@ -126,6 +128,8 @@ where
         if let Err(e) = self.start_with_wal().await {
             error!("Overlord: start with wal error {:?}", e);
         }
+
+        log::error!("init height {:?}", self.height);
 
         loop {
             select! {
